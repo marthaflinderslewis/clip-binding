@@ -37,10 +37,11 @@ Notes:
 If you find this code useful, please cite our paper:
 
 ```
-@article{lewis2022does,
-  title={Does CLIP Bind Concepts? Probing Compositionality in Large Image Models},
-  author={Lewis, Martha and Yu, Qinan and Merullo, Jack and Pavlick, Ellie},
-  journal={arXiv preprint arXiv:2212.10537},
-  year={2022}
+@article{lewis:arxiv23,
+  title = {Does CLIP Bind Concepts? Probing Compositionality in Large Image Models},
+  author = {Lewis, Martha and Nayak, Nihal V. and Yu, Peilin and Yu, Qinan and Merullo, Jack and Bach, Stephen H. and Pavlick, Ellie},
+  year = {2023},
+  Volume = {arXiv:2212.10537 [cs.LG]},
+  url = {https://arxiv.org/abs/2212.10537}
 }
 ```
