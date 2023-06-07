@@ -165,7 +165,7 @@ def train_model(model, optimizer, dataset_dict, config, device):
             accuracy[split] = acc
             save_predictions(preds, _labels, i + 1, split, config.save_dir)
 
-        print(f"Training Accuracy is: {train_acc}", flush=True)
+        logger.info(f"Training Accuracy is: {train_acc:.2f}")
 
         progress_bar.write(
             f"epoch {i +1}, "

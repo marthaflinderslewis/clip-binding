@@ -38,7 +38,6 @@ class SimpleConvModel(nn.Module):
         # Look up the embeddings for the positive and negative examples.
         # shape: (batch size, nbr contexts, emb dim)
         tgt_a_emb = self.a(img_labels[:, :, 0])
-        # print(tgt_a_emb)
         tgt_n_emb = self.n(img_labels[:, :, 1])
 
         # compose a and n
@@ -102,7 +101,6 @@ class SimpleConvRelModel(nn.Module):
 
         # shape: (batch size, nbr contexts, emb dim)
         tgt_s_emb = self.n(img_labels[:, :, 0])
-        # print(tgt_a_emb)
         tgt_r_emb = self.r(img_labels[:, :, 1])
         tgt_o_emb = self.n(img_labels[:, :, 2])
 

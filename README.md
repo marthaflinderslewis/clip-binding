@@ -25,7 +25,7 @@ python3 train.py --model_name=csp --dataset=single-object
 
 You can specify the following arguments:
 - `--model_name`: The model to train. One of `clip`, `csp`, `add`, `mult`, `conv`, `tl`, `rf`.
-- `--dataset`: The dataset to train on. One of `single-object`, `two-object`, `relational`.
+- `--dataset`: The dataset to train `single-object`, `two-object`, `rel`.
 - `--save_dir`: The directory to save the results and intermediate predictions. By default, the save directory is set to `data/<dataset>/<model_name>_seed_0`.
 
 Notes:

@@ -175,7 +175,6 @@ def csp_init(
         [prompt_template],
         context_length=config.context_length,
     )
-    # offset = len(objects)
     offset = 0
 
     return (clip_model, soft_embedding, class_token_ids, offset)
@@ -228,12 +227,9 @@ def relational_model(train_dataset, config, device):
 
 
 def get_csp(train_dataset, config, device):
-    if config.dataset in [
-        "single-object",
-        "two-object",
-    ]:
-        interface, optimizer = object_model(train_dataset, config, device)
-    else:
+    if config.dataset == "rel":
         interface, optimizer = relational_model(train_dataset, config, device)
+    else:
+        interface, optimizer = object_model(train_dataset, config, device)
 
     return interface, optimizer

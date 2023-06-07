@@ -33,10 +33,7 @@ class MatrixModel(nn.Module):
         # shape: (batch size, nbr contexts, emb dim)
         tgt_a_emb = self.a(img_labels[:, :, 0])
         batch_size, n_ctx, _ = tgt_a_emb.shape
-        # print(tgt_a_emb)
-        # print(f'tgt_a_emb shape is {tgt_a_emb.shape}')
         tgt_n_emb = self.n(img_labels[:, :, 1])
-        # print(f'tgt_n_emb shape is {tgt_n_emb.shape}')
 
         # compose a and n
         # double checked that this works as expected (tested in scratch.py)
@@ -44,7 +41,6 @@ class MatrixModel(nn.Module):
         nouns = tgt_n_emb.view(batch_size, n_ctx, self.emb_dim, 1)
 
         tgt_embs = (adjs.matmul(nouns)).squeeze(3)
-        # print(f'tgt_embs.shape is: {tgt_embs.shape}')
 
         n_batch, n_ctx, emb_dim = tgt_embs.shape
 
@@ -56,7 +52,6 @@ class MatrixModel(nn.Module):
         # embeddings. We express this as a batch matrix multiplication (bmm).
         # shape: (batch size, 1, nbr contexts)
         dots = tgt_embs.type(batch_feat.dtype).bmm(batch_feat)
-        # print(f'dots shape is {dots.shape}')
         # View this result as a 2-dimensional tensor.
         # shape: (batch size, nbr contexts)
         dots = dots.view(n_batch, n_ctx)
@@ -97,12 +92,10 @@ class MatrixRelObjModel(nn.Module):
         # Look up the embeddings for the positive and negative examples.
         # shape: (batch size, nbr contexts, emb dim)
         tgt_s_emb = self.n(img_labels[:, :, 0])
-        # print(tgt_a_emb)
         tgt_r_emb = self.r(img_labels[:, :, 1])
         tgt_o_emb = self.n(img_labels[:, :, 2])
 
         n_batch, n_ctx, emb_dim = tgt_s_emb.shape
-        # print(f'shape is {n_batch}, {n_ctx}, {emb_dim}')
 
         # compose a and n
         # double checked that this works as expected (tested in scratch.py)
@@ -114,7 +107,6 @@ class MatrixRelObjModel(nn.Module):
         tgt_embs = tgt_s_emb * vps
 
         # tgt_embs = (adjs.matmul(nouns)).squeeze(3)
-        # print(f'tgt_embs shape is {tgt_embs.shape}')
         n_batch, n_ctx, emb_dim = tgt_embs.shape
 
         # View this as a 3-dimensional tensor, with
@@ -129,7 +121,6 @@ class MatrixRelObjModel(nn.Module):
         # embeddings. We express this as a batch matrix multiplication (bmm).
         # shape: (batch size, 1, nbr contexts)
         dots = tgt_embs.type(batch_feat.dtype).bmm(batch_feat)
-        # print(f'dots shape is {dots.shape}')
         # View this result as a 2-dimensional tensor.
         # shape: (batch size, nbr contexts)
         dots = dots.view(n_batch, n_ctx)
