@@ -257,7 +257,7 @@ if __name__ == "__main__":
     if not config.save_dir:
         config.save_dir = os.path.join(
             DIR_PATH,
-            f"data/{config.dataset}/{config.model_name}_seed_{config.seed}",
+            f"data/model/{config.dataset}/{config.model_name}_seed_{config.seed}",
         )
 
     # get the dataset
