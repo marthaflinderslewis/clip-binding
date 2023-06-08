@@ -30,7 +30,7 @@ You can specify the following arguments:
 
 Notes:
 1.  `--evaluate_only`: To evaluate pretrained CLIP, set this to `True` and set the `--model_name=clip`.
-2.  Change the learning rate to `--lr=1e-07` to fine-tune CLIP and `--lr=1e-05` to train the CDSMs (`add`, `mult`, `conv`, `tl`, `rf`).
+2.  Change the learning rate to `--lr=1e-07` to fine-tune CLIP and `--lr=5e-04` to train the CDSMs (`add`, `mult`, `conv`, `tl`, `rf`).
 
 ## Citation
 
