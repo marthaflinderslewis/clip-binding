@@ -44,7 +44,6 @@ class RFConvModel(nn.Module):
         rn_emb = self.rn(torch.tensor([0]).to(batch_feat.device))
 
         # compose a and n
-        # double checked that this works as expected (tested in scratch.py)
         tgt_embs = self.conv(tgt_a_emb, ra_emb) + self.conv(tgt_n_emb, rn_emb)
         n_batch, n_ctx, emb_dim = tgt_embs.shape
 
@@ -114,8 +113,7 @@ class RFConvRelModel(nn.Module):
         rs_emb = self.rs(torch.tensor([0]).to(self.device))
         ro_emb = self.ro(torch.tensor([0]).to(self.device))
 
-        # compose a and n
-        # double checked that this works as expected (tested in scratch.py)
+        # compose s, r, o
         tgt_embs = (
             self.conv(tgt_s_emb, rs_emb)
             + self.conv(tgt_r_emb, rr_emb)
