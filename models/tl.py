@@ -36,7 +36,6 @@ class MatrixModel(nn.Module):
         tgt_n_emb = self.n(img_labels[:, :, 1])
 
         # compose a and n
-        # double checked that this works as expected (tested in scratch.py)
         adjs = tgt_a_emb.view((batch_size, n_ctx, self.emb_dim, self.emb_dim))
         nouns = tgt_n_emb.view(batch_size, n_ctx, self.emb_dim, 1)
 
@@ -97,8 +96,7 @@ class MatrixRelObjModel(nn.Module):
 
         n_batch, n_ctx, emb_dim = tgt_s_emb.shape
 
-        # compose a and n
-        # double checked that this works as expected (tested in scratch.py)
+        # compose s, r, o
         rels = tgt_r_emb.view((n_batch, n_ctx, emb_dim, emb_dim))
         objs = tgt_o_emb.view(n_batch, n_ctx, emb_dim, 1)
 
