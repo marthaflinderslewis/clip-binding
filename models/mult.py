@@ -35,7 +35,6 @@ class MultModel(nn.Module):
         tgt_n_emb = self.n(img_labels[:, :, 1])
 
         # compose a and n
-        # double checked that this works as expected (tested in scratch.py)
         tgt_embs = tgt_a_emb * tgt_n_emb
         n_batch, n_ctx, emb_dim = tgt_embs.shape
 
@@ -95,8 +94,7 @@ class MultRelModel(nn.Module):
         tgt_r_emb = self.r(img_labels[:, :, 1])
         tgt_o_emb = self.n(img_labels[:, :, 2])
 
-        # compose a and n
-        # double checked that this works as expected (tested in scratch.py)
+        # compose s, r, o
         tgt_embs = tgt_s_emb * tgt_r_emb * tgt_o_emb
         n_batch, n_ctx, emb_dim = tgt_embs.shape
 
